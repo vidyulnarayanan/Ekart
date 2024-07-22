@@ -1,0 +1,21 @@
+{% load static %}
+<div class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="{%static 'images/logomain.png' %}" alt="logo" width="125px"></a>
+    </div>
+    <nav>
+        <ul id="MenuItems">
+            <li><a href="{%url 'home' %}">Home</a></li>
+            <li><a href="{%url 'list_product' %}">Products</a></li>
+
+            {% if not user.is_autherticated %}
+            <li><a href="{%url 'account' %}">Account</a></li>
+            {% endif %}
+            {%if user.is_authenticated %}
+            <li><a href="{%url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+    <a href="{%url 'cart' %}"><img src="{%static 'images/cart.png' %}" width="30px" height="30px"></a>
+    {%endif%}
+    <img src="{%static 'images/menu.png' %}" class="menu-icon" onclick="menutoggle()">
+</div>
