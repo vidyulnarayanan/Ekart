@@ -465,6 +465,9 @@ form a{
     transform: translateX(100px);
     transition: transform 1s;
 }
+/* Add this to your CSS file (e.g., style.css) */
+
+
 
 /* Media query for menu */
 @media only screen and (max-width: 800px){
