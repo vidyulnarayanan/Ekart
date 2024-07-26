@@ -13,7 +13,13 @@
             <form method="post" action="{% url 'add_to_cart' %}" enctype="multipart/form-data">
                 {% csrf_token %}
             <input type="hidden" value="{{product.id}}" name="product_id"/>
-            <input type="number" name="quantity" value="1">
+            <input type="number" name="quantity" value="1"><br>
+            <label for="size">Size:</label>
+            <select name="size" id="size">
+                {% for size, size_display in product.SIZE_CHOICES %}
+                    <option value="{{ size }}">{{ size_display }}</option>
+                {% endfor %}
+            </select>
             <button type="submit"class="btn">Add To Cart</button>
             </form>
             <h3>Product Details <i class="fa fa-indent"></i></h3>

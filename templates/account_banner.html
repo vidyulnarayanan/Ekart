@@ -33,6 +33,7 @@
                         <input type="text" name="username" maxlength="10" minlength="3" placeholder="Username">
                         <input type="email" name="email" required placeholder="Email">
                         <input type="password" name="password" minlength="6" placeholder="Password">
+                        <input type="password" name="confirm_password" minlength="6" placeholder="Confirm Password">
                         <input type="text" name="address"  minlength="5" placeholder="address">
                         <input type="text" name="phone"  minlength="5" placeholder="phone">
                         <button type="submit" name="register" class="btn">Register</button>
@@ -42,3 +43,78 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const form = document.getElementById('RegForm');
+        
+        form.addEventListener('submit', function(event) {
+            // Retrieve form values
+            const username = form.querySelector('input[name="username"]').value.trim();
+            const email = form.querySelector('input[name="email"]').value.trim();
+            const password = form.querySelector('input[name="password"]').value;
+            const confirmPassword = form.querySelector('input[name="confirm_password"]').value;
+            const address = form.querySelector('input[name="address"]').value.trim();
+            const phone = form.querySelector('input[name="phone"]').value.trim();
+            
+            let valid = true; // Track overall validity
+            let errorMessages = []; // Store error messages
+    
+            // Clear previous error messages
+            const messageContainer = document.querySelector('.message-container');
+            if (messageContainer) {
+                messageContainer.innerHTML = '';
+            }
+    
+            // Username validation
+            if (username.length < 3 || username.length > 10) {
+                valid = false;
+                errorMessages.push('Username must be between 3 and 10 characters long.');
+            }
+    
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                valid = false;
+                errorMessages.push('Please enter a valid email address.');
+            }
+    
+            // Password validation
+            if (password.length < 6) {
+                valid = false;
+                errorMessages.push('Password must be at least 6 characters long.');
+            }
+    
+            // Confirm Password validation
+            if (password !== confirmPassword) {
+                valid = false;
+                errorMessages.push('Passwords do not match.');
+            }
+    
+            // Address validation
+            if (address.length < 5) {
+                valid = false;
+                errorMessages.push('Address must be at least 5 characters long.');
+            }
+    
+            // Phone validation
+            if (phone.length < 10) {
+                valid = false;
+                errorMessages.push('Phone number must be at least 10 characters long.');
+            }
+    
+            // Display error messages if validation fails
+            if (!valid) {
+                if (messageContainer) {
+                    errorMessages.forEach(msg => {
+                        const li = document.createElement('li');
+                        li.textContent = msg;
+                        li.classList.add('error'); // Add a class for styling
+                        messageContainer.appendChild(li);
+                    });
+                }
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    });
+    </script>
+    

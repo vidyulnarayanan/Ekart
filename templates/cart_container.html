@@ -7,6 +7,7 @@
         <tbody><tr>
             <th>Product</th>
             <th>Quantity</th>
+            <th>Size</th>
             <th>Subtotal</th>
         </tr>
         {% for cart_item in cart.added_items.all %}
@@ -23,6 +24,7 @@
                 </div>
             </td>
             <td><input type="number" disabled value="{{cart_item.quantity}}"></td>
+            <td>{{ cart_item.size }}</td>
             <td>${% multiply cart_item.product.price cart_item.quantity %}</td>
         </tr>
         {% endfor %}

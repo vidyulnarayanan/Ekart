@@ -28,7 +28,6 @@ def checkout_cart(request):
             customer = user.customer_profile
             total = float(request.POST.get('total'))
             print(f"Total: {total}")
-
             order_obj = Order.objects.get(
                 owner=customer,
                 order_status=Order.CART_STAGE
@@ -66,6 +65,7 @@ def add_to_cart(request):
         user=request.user
         customer=user.customer_profile
         quantity=int(request.POST.get('quantity'))
+        size = request.POST.get('size')
         product_id=request.POST.get('product_id')
         cart_obj, created=Order.objects.get_or_create(
             owner=customer,
@@ -75,6 +75,7 @@ def add_to_cart(request):
         ordered_item,created=OrderedItem.objects.get_or_create(
             product=product_obj,
             owner=cart_obj,
+            size=size
         )
         if created:
             ordered_item.quantity=quantity

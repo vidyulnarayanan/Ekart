@@ -8,8 +8,7 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
-.navbar
-{
+.navbar {
     display: flex;
     align-items: center;
     padding: 20px;
@@ -19,18 +18,34 @@ nav{
     flex: 1;
     text-align: right;
 }
-nav ul{
+nav ul {
     display: inline-block;
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
-nav ul li{
+
+nav ul li {
     display: inline-block;
     margin-right: 20px;
+    position: relative; /* For positioning the hover effect */
 }
-a{
+
+nav ul li a {
     text-decoration: none;
-    color: #555;
+    color: #8b1212; /* White text color */
+    font-size: 18px; /* Font size for the menu items */
+    padding: 10px 15px; /* Padding for better clickability */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effect */
+    
 }
+
+nav ul li a:hover {
+    color: white;
+    background-color: #ff523b;
+    border-radius: 20px; /* Rounded corners for the hover effect */
+}
+
 p{
     color: #555;
 }
@@ -59,18 +74,23 @@ p{
     line-height: 60px;
     margin: 25px 0;
 }
-.btn{
+.btn {
     display: inline-block;
-    background: #ff523b;
+    background: #ff523b; 
     color: white;
-    padding: 8px 30px;
-    margin: 30px 0;
-    border-radius: 30px;
-    transition: background 0.5s;
+    padding: 10px 35px;
+    margin: 20px 0;
+    border-radius: 15px; 
+    transition: background 0.3s ease, box-shadow 0.3s ease; 
+    font-size: 15px;
+    font-weight: 500; 
 }
-.btn:hover{
-    background: #563434;
+.btn:hover {
+    background: linear-gradient(90deg, #c43a2f, #a32b24); /* Darker gradient on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Slightly increased shadow on hover */
+    transform: translateY(-2px); /* Slight upward movement on hover */
 }
+
 .header{
     background: radial-gradient(#fff,#ffd6d6);
 }
@@ -232,6 +252,7 @@ small{
 ul{
     list-style-type: none;
 }
+
 .app-logo{
     margin-top: 20px;
 }
@@ -388,7 +409,7 @@ th:last-child{
 .form-container{
     background: #fff;
     width: 300px;
-    height: 450px;
+    height: 500px;
     position: relative;
     text-align: center;
     padding: 20px 0;
@@ -470,52 +491,57 @@ form a{
 
 
 /* Media query for menu */
-@media only screen and (max-width: 800px){
-
-    nav ul{
+@media only screen and (max-width: 800px) {
+    nav ul {
         position: absolute;
         top: 70px;
         left: 0;
-        background: #333;
+        background: #444;
         width: 100%;
         overflow: hidden;
         transition: max-height 0.5s;
     }
-    nav ul li{
+
+    nav ul li {
         display: block;
         margin-right: 50px;
         margin-top: 10px;
         margin-bottom: 10px;
     }
-    nav ul li a{
+
+    nav ul li a {
         color: white;
     }
-    .menu-icon{
+
+    .menu-icon {
         display: block;
         cursor: pointer;
     }
 }
 
-/* Media query for 600 screen size */
-@media only screen and (max-width: 600px){
-
-    .row{
+@media only screen and (max-width: 600px) {
+    .row {
         text-align: center;
     }
-    .col-2, .col-3, .col-4{
+
+    .col-2, .col-3, .col-4 {
         flex-basis: 100%;
     }
-    .single-product .row{
+
+    .single-product .row {
         text-align: left;
     }
-    .single-product .col-2{
+
+    .single-product .col-2 {
         padding: 20px 0;
     }
-    .single-product h1{
+
+    .single-product h1 {
         font-size: 26px;
         line-height: 32px;
     }
-    .cart-info p{
+
+    .cart-info p {
         display: none;
     }
 }

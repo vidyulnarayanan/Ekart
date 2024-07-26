@@ -27,7 +27,20 @@ class Order(models.Model):
     def __str__(self) -> str:
         return "order-{}-{}".format(self.id,self.owner.name)
 
+
+
 class OrderedItem(models.Model):
+    SIZE_S = 'S'
+    SIZE_M = 'M'
+    SIZE_L = 'L'
+    SIZE_XL = 'XL'
+    SIZE_CHOICES = [
+        (SIZE_S, 'Small'),
+        (SIZE_M, 'Medium'),
+        (SIZE_L, 'Large'),
+        (SIZE_XL, 'Extra Large'),
+    ]
+    size = models.CharField(max_length=2, choices=SIZE_CHOICES, default=SIZE_M)
     product=models.ForeignKey(product,related_name='added_carts',on_delete=models.SET_NULL,null=True)
     quantity=models.IntegerField(default=1)
     owner=models.ForeignKey(Order,on_delete=models.CASCADE,related_name='added_items')
